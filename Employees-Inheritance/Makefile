@@ -2,7 +2,7 @@
 CXX = g++
 CXXFLAGS = -g -Wall -std=c++11
 TARGET = main
-OBJS = main.o Employee.o Manager.o Executive.o
+OBJS = main.o employee.o manager.o executive.o
 
 # Default target to build the program
 all: $(TARGET)
@@ -12,17 +12,17 @@ $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
 # Rules to build the object files
-main.o: main.cpp Employee.h Manager.h Executive.h
+main.o: main.cpp employee.h manager.h executive.h
 	$(CXX) $(CXXFLAGS) -c main.cpp
 
-Employee.o: Employee.cpp Employee.h
-	$(CXX) $(CXXFLAGS) -c Employee.cpp
+employee.o: employee.cpp employee.h
+	$(CXX) $(CXXFLAGS) -c employee.cpp
 
-Manager.o: Manager.cpp Manager.h Employee.h
-	$(CXX) $(CXXFLAGS) -c Manager.cpp
+manager.o: manager.cpp manager.h employee.h
+	$(CXX) $(CXXFLAGS) -c manager.cpp
 
-Executive.o: Executive.cpp Executive.h Manager.h Employee.h
-	$(CXX) $(CXXFLAGS) -c Executive.cpp
+executive.o: executive.cpp executive.h manager.h employee.h
+	$(CXX) $(CXXFLAGS) -c executive.cpp
 
 # Pseudo-target to clean up the directory
 clean:
