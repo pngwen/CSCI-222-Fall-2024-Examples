@@ -1,3 +1,11 @@
+/**
+ * @file toc.cpp
+ * @brief Demonstration of iomanipulators
+ * @version 0.1
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #include <iostream>
 #include <iomanip>
 #include <string>
