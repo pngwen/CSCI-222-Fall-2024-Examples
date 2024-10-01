@@ -35,6 +35,9 @@ int main() {
 
     // print out the header
     cout << endl << "Table of Contents" << endl;
+    cout << setfill('=') << setw(73) << "" << endl;
+    cout << setfill('.');
+
     for(TocEntry *entry = toc; entry < toc + sizeof(toc)/sizeof(TocEntry); entry++) {
         cout << left  << setw(70) << entry->name 
              << right <<  setw(3) << entry->page 
