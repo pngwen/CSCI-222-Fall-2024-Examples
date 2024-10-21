@@ -6,6 +6,7 @@ using namespace std;
 // Function prototypes
 void play(Hanoi &puzzle);
 void solve(Hanoi &puzzle);
+void move(Hanoi &puzzle, int &count, int n, int src, int dest, int spare);
 
 int main()
 {
@@ -74,9 +75,36 @@ void play(Hanoi &puzzle)
  */
 void solve(Hanoi &puzzle)
 {
+    int count=0;
     puzzle.display();
 
-    // TODO: Implement the solve function
-    cout << "I do not not know how to solve the puzzle... yet." << endl;
+    move(puzzle, count, puzzle.getDisks(), 0, 2, 1);
+    cout << "You solved the puzzle in " << count << " moves." << endl;
 }
 
+/**
+ * @brief Recursively solve the puzzle
+ * 
+ * @param puzzle 
+ * @param n 
+ * @param src 
+ * @param dest 
+ * @param spare
+ */
+void move(Hanoi &puzzle, int &count, int n, int src, int dest, int spare)
+{
+    // base condition
+    if(n == 1) {
+        cout << "Src=" << src+1 << endl
+             << "Dest=" << dest+1 << endl;
+        puzzle.move(src, dest);
+        puzzle.display();
+        count++;
+        return;
+    }
+
+    // recursive cases
+    move(puzzle, count, n-1, src, spare, dest);
+    move(puzzle, count, 1, src, dest, spare);
+    move(puzzle, count, n-1, spare, dest, src);
+}
