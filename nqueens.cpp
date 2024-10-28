@@ -1,10 +1,24 @@
 #include <iostream>
+#include <iomanip>
+#include <cmath>
+
 /*
  * Backtracking 
  * 1.) Represent a candidate solution.
  * 2.) Validate candidate solutions.
  * 3.) Check to see if the problem has been solved.
  * 4.) Recursively evaluate every possible move.
+ *     - if candidate is invalid, return impossible
+ *     - if candidate is solved, return the candidate
+ *     - Find the next unknown in the solution
+ *     - For every value that can go there:
+ *        solution = solve(candidate)
+ *        if solution is found, stop
+ *     - after the loop
+ *        if(solution is found)
+ *            retun the solution
+ *        else
+ *            return that it is impossible
  */
 
 /**
@@ -82,16 +96,40 @@ int *copySolution(int *queens, int n);
  * 
  * @param queens 
  * @param n 
+ * @param depth - recursion dpeth counter
  * @return int* null if there is no solution, array otherwise
  */
-int *solve(int *queens, int n);
+int *solve(int *queens, int n, int depth);
+
+/**
+ * @brief Print the nqueens solution.
+ * 
+ * @param queens 
+ * @param n 
+ */
+void printSolution(int *queens, int n);
 
 int main()
 {
     int n;
+    int *queens, *solution;
 
+    // get n
     std::cout << "N=";
     std::cin >> n;   
+
+    // try to solve it
+    queens = copySolution(nullptr, n);
+    solution = solve(queens, n, 0);
+
+    // display the results
+    if(solution == nullptr) {
+        std::cout << "Impossible" << std::endl;
+    } else {
+        printSolution(solution, n);
+    }
+    delete[] queens;
+    delete[] solution;
 }
 
 
@@ -110,7 +148,7 @@ int file(int q, int n)
 // check for on the same diagonal
 bool onDiag(int q1, int q2, int n)
 {
-    return rank(q1,n)-rank(q2,n) == file(q1,n)-file(q2,n);
+    return abs(rank(q1,n)-rank(q2,n)) == abs(file(q1,n)-file(q2,n));
 }
 
 // check to see if two queens are attacking each other
@@ -143,7 +181,7 @@ bool valid(int queens[], int n)
 // determine solved status
 bool solved(int queens[], int n)
 {
-    int count;
+    int count=0;
 
     // count the queens
     for(int i=0; i<n; i++) {
@@ -162,16 +200,67 @@ int *copySolution(int *queens, int n) {
     for(int i=0; i<n; i++) {
         ar[i] = queens ? queens[i] : -1;
     }
+
+    return ar;
 }
 
 // recursively solve
-int *solve(int *queens, int n)
+int *solve(int *queens, int n, int depth)
 {
+    // print the candidate
+    //std::cout << std::setw(depth) << "";
+    //printSolution(queens, n);
+
     if(not valid(queens, n)) {
         return nullptr;
     }
 
-    if(solved) {
+    if(solved(queens,n)) {
         return copySolution(queens, n);
+    }
+
+    //find the position we need to work on
+    int pos;
+    for(int i=0; i<n; i++) {
+        if(queens[i] == -1) {
+            pos = i;
+            break;
+        }
+    }
+
+    //copy the candidate array
+    int *candidate = copySolution(queens, n);
+
+    // search for a solution
+    int *solution = nullptr;
+    for(int i=0; i<n*n; i++) {
+        candidate[pos] = i;
+        solution = solve(candidate, n, depth+2);
+        if(solution) {
+            break;
+        }
+    }
+
+    //clean up and return
+    delete [] candidate;
+    return solution;
+}
+
+
+// print the queens
+void printSolution(int *queens, int n) 
+{
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<n; j++) {
+            char c = '.';
+            for(int q=0; q<n; q++) {
+                if(rank(queens[q],n) == i and file(queens[q],n)==j) {
+                    c ='Q';
+                    break;
+                }
+            }
+            std::cout << c;
+        }
+        std::cout << std::endl;
     }
 }
