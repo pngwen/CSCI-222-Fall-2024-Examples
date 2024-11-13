@@ -12,6 +12,7 @@
 #define COMMAND_H
 class Command 
 {
+public:
     /**
      * @brief Pure virtual execute function.
      * 

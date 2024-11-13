@@ -2,6 +2,8 @@
 #include <iostream>
 #include <iomanip>
 #include "menu.h"
+#include <cstdlib>
+#include <exception>
 
 using namespace std;
 
@@ -44,8 +46,14 @@ void Menu::execute()
     int choice;
 
     do {
-        displayMenu(names);
-        choice = getInput(names);
+        displayMenu(labels, title);
+        choice = getChoice(labels);
+
+        //abort the program on eof in std in
+        if(cin.eof()) {
+            throw runtime_error{"Standard Input has closed unexpectedly."};
+        }
+
         if(choice != -1) {
             valid = true;
         } else {
@@ -54,7 +62,7 @@ void Menu::execute()
     } while(not valid);
 
     // execute the user selection.
-    actions[choice].execute();
+    actions[choice]->execute();
 }
 
 
@@ -67,7 +75,7 @@ void Menu::execute()
 void Menu::addItem(const std::string &name, Command &action)
 {
     labels.push_back(name);
-    actions.push_back(action);
+    actions.push_back(&action);
 }
 
 
@@ -92,6 +100,13 @@ static int getChoice(const vector<string> &names)
     // get the choice
     cout << "Choice? ";
     cin >> choice;
+
+    if(not cin) {
+        string line;
+        choice = -1;
+        cin.clear();
+        getline(cin, line);
+    }
 
     //validate the choice
     if(choice < minChoice or choice > maxChoice){

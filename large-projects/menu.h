@@ -50,7 +50,7 @@ public:
 private:
     std::string title;
     std::vector<std::string> labels;
-    std::vector<Command&> actions;
+    std::vector<Command*> actions;
 };
 
 #endif
