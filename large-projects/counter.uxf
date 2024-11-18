@@ -1,0 +1,29 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Counter
+--
+</help_text><element><id>UMLClass</id><coordinates><x>90</x><y>220</y><w>300</w><h>250</h></coordinates><panel_attributes>Counter
+--
+- count : int
+- label : string
+- increment : int
+- start : int
+--
++ Counter()
++ Counter(label : String) 
++ Counter(label : String, increment : int)
++ Counter(label : String, increment : int, start : int)
++ inc() : void
++ dec() : void
++ reset() : void
++ getLabel() : String
++ getCount() : int
++ getIncrement() : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>10</y><w>100</w><h>30</h></coordinates><panel_attributes>Command</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>90</y><w>100</w><h>30</h></coordinates><panel_attributes>Menu</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>30</y><w>90</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>180</y><w>240</w><h>160</h></coordinates><panel_attributes>CounterApplication
+-
+- counters : std::vector&lt;CounterUI&gt; 
+- main : Menu
+- counter : Menu
+- counterSelect : Menu
+- selected : Counter*
+-
++ CounterApplication()
++ execute() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>30</y><w>50</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;150</additional_attributes></element></diagram>

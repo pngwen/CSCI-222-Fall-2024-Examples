@@ -34,7 +34,7 @@ public:
 
     /**
      * @brief Execute the menu
-     * 
+     * @throws std::runtime_error If the filestream closes 
      */
     virtual void execute() override;
 
