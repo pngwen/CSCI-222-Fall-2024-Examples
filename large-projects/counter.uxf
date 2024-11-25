@@ -1,6 +1,7 @@
 <diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Counter
 --
-</help_text><element><id>UMLClass</id><coordinates><x>90</x><y>220</y><w>300</w><h>250</h></coordinates><panel_attributes>Counter
+
+</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>260</y><w>300</w><h>250</h></coordinates><panel_attributes>Counter
 --
 - count : int
 - label : string
@@ -16,7 +17,7 @@
 + reset() : void
 + getLabel() : String
 + getCount() : int
-+ getIncrement() : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>10</y><w>100</w><h>30</h></coordinates><panel_attributes>Command</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>90</y><w>100</w><h>30</h></coordinates><panel_attributes>Menu</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>30</y><w>90</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>180</y><w>240</w><h>160</h></coordinates><panel_attributes>CounterApplication
++ getIncrement() : int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>550</x><y>50</y><w>100</w><h>30</h></coordinates><panel_attributes>Command</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>130</y><w>100</w><h>30</h></coordinates><panel_attributes>Menu</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>70</y><w>90</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>220</y><w>240</w><h>160</h></coordinates><panel_attributes>CounterApplication
 -
 - counters : std::vector&lt;CounterUI&gt; 
 - main : Menu
@@ -26,4 +27,51 @@
 -
 + CounterApplication()
 + execute() : void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>30</y><w>50</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;150</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>70</y><w>50</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;150</additional_attributes></element><element><id>UMLClass</id><coordinates><x>920</x><y>110</y><w>240</w><h>70</h></coordinates><panel_attributes>CounterApplicationCommand
+-
+- app : CounterApplication *
+-
+AddCounter(app : CounterApplication*)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>50</y><w>400</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;380;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>280</y><w>240</w><h>60</h></coordinates><panel_attributes>AddCounter
+-
+AddCounter(app : CounterApplication*)
+execute() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>860</x><y>370</y><w>240</w><h>60</h></coordinates><panel_attributes>DeleteCounter
+-
+DeleteCounter(app : CounterApplication*)
+execute() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>670</x><y>620</y><w>280</w><h>70</h></coordinates><panel_attributes>IncrementCounter
+-
+IncrementCounter(app : CounterUI*)
+execute() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>750</y><w>280</w><h>60</h></coordinates><panel_attributes>DecrementCounter
+-
+DecrementCounter(app : CounterUI*)
+execute() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>790</x><y>520</y><w>240</w><h>60</h></coordinates><panel_attributes>ShowCounter
+-
+ShowCounter(app : CounterUI*)
+execute() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>620</y><w>240</w><h>60</h></coordinates><panel_attributes>ResetCounter
+-
+ResetCounter(app : CounterUI*)
+execute() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>920</x><y>170</y><w>110</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>90;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>170</y><w>90</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;200</additional_attributes></element><element><id>Relation</id><coordinates><x>670</x><y>130</y><w>260</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Nested&gt;&gt;</panel_attributes><additional_attributes>10;90;240;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1210</x><y>0</y><w>310</w><h>60</h></coordinates><panel_attributes>SelectCounter
+-
+- index : int
+-
+SelectCounter(app : CounterApplication*, index : int)
+execute() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1070</x><y>10</y><w>160</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;100;140;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>440</y><w>210</w><h>100</h></coordinates><panel_attributes>CounterUI
+-
+- counter : Counter*
+- menu : Menu
+-
+CounterUI(Counter *)
+execute() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>530</y><w>110</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Nested&gt;&gt;</panel_attributes><additional_attributes>70;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>530</y><w>130</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Nested&gt;&gt;</panel_attributes><additional_attributes>10;10;110;90</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>530</y><w>90</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Nested&gt;&gt;</panel_attributes><additional_attributes>10;10;30;220</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>490</y><w>130</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Nested&gt;&gt;</panel_attributes><additional_attributes>10;10;110;60</additional_attributes></element></diagram>
