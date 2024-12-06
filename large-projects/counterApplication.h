@@ -14,25 +14,59 @@
 #include <vector>
 #include "menu.h"
 #include "command.h"
+#include "counter.h"
 
 class CounterApplication : public Command
 {
-/*
-- counters : std::vector<CounterUI> 
-- main : Menu
-- counter : Menu
-- counterSelect : Menu
-- selected : Counter*
--
-+ CounterApplication()
-+ execute() : void
- */
+public:
+    /**
+     * @brief Construct a new Counter Application object
+     * 
+     */
+    CounterApplication();
+
+    /**
+     * @brief Destroy the Counter Application object
+     * 
+     */
+    virtual ~CounterApplication();
+
+    /**
+     * @brief Execute the counter application
+     * 
+     */
+    virtual void execute() override;
+
+    /**
+     * @brief quit the application
+     * 
+     */
+    virtual void quit();
 
 private:
-    std::vector<CounterUI> counters;
-    Menu main;
-    Menu counter;
-    Menu counterSelect;
-    Counter *selected;
+    std::vector<Counter> counters;
+    bool running;
+
+    class CounterApplicationCommand : public Command
+    {
+    public:
+        CounterApplicationCommand(CounterApplication *app);
+    protected:
+        CounterApplication *app;
+    };
+
+    class AddCounter : public CounterApplicationCommand
+    {
+    public:
+        AddCounter(CounterApplication *app);
+        virtual void execute() override;
+    };
+
+    class Quit : public CounterApplicationCommand
+    {
+    public:
+        Quit(CounterApplication *app);
+        virtual void execute() override;
+    };
 };
 #endif

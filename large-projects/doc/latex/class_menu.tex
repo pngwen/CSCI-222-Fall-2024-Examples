@@ -1,0 +1,70 @@
+\doxysection{Menu Class Reference}
+\hypertarget{class_menu}{}\label{class_menu}\index{Menu@{Menu}}
+Inheritance diagram for Menu\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_menu}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_menu_ad466dd83355124a6ed958430450bfe94}\label{class_menu_ad466dd83355124a6ed958430450bfe94} 
+{\bfseries Menu} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_menu}{Menu} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_menu_a451460714e4127d85f4bf6b1aeabc93a}\label{class_menu_a451460714e4127d85f4bf6b1aeabc93a} 
+{\bfseries Menu} (const std\+::string \&title)
+\item 
+\Hypertarget{class_menu_a831387f51358cfb88cd018e1777bc980}\label{class_menu_a831387f51358cfb88cd018e1777bc980} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_menu}{Menu} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_menu_aeb4ca5256705e373058af129d0318eb6}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Execute the menu. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_menu_a808f4d06bb09a8f1e8e59d76e7d9b144}{add\+Item}} (const std\+::string \&name, \mbox{\hyperlink{class_command}{Command}} \&action)
+\begin{DoxyCompactList}\small\item\em Add an item to the menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_command}{Command}}}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_menu_a808f4d06bb09a8f1e8e59d76e7d9b144}\index{Menu@{Menu}!addItem@{addItem}}
+\index{addItem@{addItem}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{addItem()}{addItem()}}
+{\footnotesize\ttfamily \label{class_menu_a808f4d06bb09a8f1e8e59d76e7d9b144} 
+void Menu\+::add\+Item (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{\mbox{\hyperlink{class_command}{Command}} \&}]{action}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Add an item to the menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em action} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_menu_aeb4ca5256705e373058af129d0318eb6}\index{Menu@{Menu}!execute@{execute}}
+\index{execute@{execute}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_menu_aeb4ca5256705e373058af129d0318eb6} 
+void Menu\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execute the menu. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & If the filestream closes \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \mbox{\hyperlink{class_command_a6fd7d9bd8df8bfc881e4d6c7cd1878b7}{Command}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{menu_8h}{menu.\+h}}\item 
+menu.\+cpp\end{DoxyCompactItemize}
